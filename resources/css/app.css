@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        font-family: 'Noto Sans JP', 'Poppins', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        letter-spacing: -0.025em;
+    }
+
+    p {
+        font-weight: 400;
+        line-height: 1.75;
+        margin-bottom: 1em;
+    }
+    .editor-js {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+    }
+
+    /* Header */
+    .editor-js h1 {
+        font-size: 36px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .editor-js h2 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #444;
+    }
+
+    .editor-js h3 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #555;
+    }
+
+    /* List styling */
+    .editor-js ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        color: #333;
+    }
+
+    .editor-js ol {
+        list-style-type: decimal;
+        margin-left: 20px;
+        color: #333;
+    }
+
+    .editor-js li {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    /* Table styling */
+    .editor-js table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    .editor-js th, .editor-js td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .editor-js th {
+        background-color: #f1f1f1;
+        font-weight: bold;
+    }
+
+    /* Link Tool styling */
+    .editor-js a {
+        color: #0070ff;
+        text-decoration: underline;
+    }
+
+    .editor-js a:hover {
+        color: #0056cc;
+    }
+
+    /* Inline Code styling */
+    .editor-js code {
+        background-color: #f4f4f4;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 16px;
+    }
+
+    /* Delimiter */
+    .editor-js hr {
+        border: none;
+        border-top: 2px dashed #ddd;
+        margin: 20px 0;
+    }
+
+    /* Warning tool */
+    .editor-js .cdx-warning {
+        background-color: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 15px;
+    }
+
+    .editor-js .cdx-warning__title {
+        font-weight: bold;
+        color: #856404;
+    }
+
+    .editor-js .cdx-warning__message {
+        color: #856404;
+    }
+
+    .active-link {
+        border-bottom: 2px solid #0891b2;
+        padding-bottom: 2px;
+    }
+
+    .no-animation span {
+        display: none; /* span要素を非表示にする */
+    }
+
+    /* モダンなボタンスタイル */
+    .btn-modern {
+        @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2;
+    }
+
+    .btn-primary {
+        @apply btn-modern bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-700 hover:to-blue-700 focus:ring-cyan-500;
+    }
+
+    .btn-secondary {
+        @apply btn-modern bg-white text-cyan-700 border border-cyan-600 hover:bg-cyan-50 focus:ring-cyan-500;
+    }
+
+    /* モダンなカードスタイル */
+    .card-modern {
+        @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border-0;
+    }
+
+    /* グラスモーフィズム効果 */
+    .glass {
+        @apply bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg;
+    }
+
+    /* ヒーローセクション */
+    .hero-modern {
+        @apply relative rounded-xl overflow-hidden;
+        height: 400px;
+    }
+
+    /* アニメーション */
+    .hover-lift {
+        @apply transition-transform duration-300 hover:-translate-y-1;
+    }
+
+    /* タグスタイル */
+    .tag {
+        @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+    }
+
+    .tag-primary {
+        @apply inline-block bg-cyan-100 text-cyan-800 text-sm px-3 py-1 rounded-full text-center;
+    }
+
+    .tag-secondary {
+        @apply tag bg-blue-100 text-blue-800;
+    }
+
+    /* EditorJS Color Plugin Styles - Allow inline styles to work */
+    
+    /* Ensure span and mark elements display properly */
+    .content-blocks span {
+        display: inline;
+    }
+
+    .content-blocks mark {
+        display: inline;
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+
+    /* Remove any conflicting styles and let inline styles work */
+    .content-blocks span[style] {
+        /* Let the inline style attribute work naturally */
+    }
+
+    .content-blocks mark[style] {
+        /* Let the inline style attribute work naturally */
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+
+    /* Ensure custom classes work too */
+    .content-blocks .cdx-color {
+        display: inline;
+    }
+
+    .content-blocks .cdx-marker {
+        display: inline;
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+
+    /* Color picker popup styles */
+    .color-picker-popup {
+        position: absolute !important;
+        background: white !important;
+        border: 1px solid #ccc !important;
+        border-radius: 4px !important;
+        padding: 8px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+        z-index: 1000 !important;
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 4px !important;
+    }
+
+    /* EditorJS inline toolbar color picker */
+    .ce-color-tool {
+        min-width: 200px;
+    }
+
+    .ce-color-tool__palette {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 4px;
+        padding: 8px;
+    }
+
+    .ce-color-tool__color {
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
+        cursor: pointer;
+        border: 1px solid #e1e5e9;
+    }
+
+    .ce-color-tool__color:hover {
+        transform: scale(1.1);
+    }
+
+    .ce-color-tool__color--active {
+        border: 2px solid #388ae5;
+    }
+}
