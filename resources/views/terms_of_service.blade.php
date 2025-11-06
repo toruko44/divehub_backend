@@ -1,8 +1,9 @@
 @extends('layout.user')
 
 @section('content')
-    <div class="relative bg-white m-4 rounded-md border border-gray-300 p-6">
-        <h1 class="text-2xl font-bold mb-4">利用規約</h1>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="relative bg-white rounded-md border border-gray-300 p-6">
+            <h1 class="text-2xl font-bold mb-4">利用規約</h1>
 
         <p class="mb-4">この利用規約（以下、「本規約」）は、DIVE HUB〜ダイビング情報共有サイト〜（以下、「当サイト」）が提供するサービス（以下、「本サービス」）の利用条件を定めるものです。ユーザーの皆様（以下、「ユーザー」）は、本規約に同意いただいた上で、本サービスをご利用いただきます。</p>
 
@@ -80,5 +81,6 @@
 
         <h2 class="text-xl font-semibold mb-2">第14条（準拠法・裁判管轄）</h2>
         <p class="mb-4">本規約の解釈にあたっては、日本法を準拠法とします。本サービスに関して紛争が生じた場合には、本店所在地を管轄する裁判所を専属的合意管轄とします。</p>
+        </div>
     </div>
 @endsection

@@ -8,7 +8,7 @@
     </div>
 
     <div
-        class="flex min-h-full flex-col justify-center px-4 pb-[100px] sm:px-6 sm:pb-[200px] bg-[url('/images/pink-cloud.png')]">
+        class="flex min-h-full flex-col justify-center px-4 pb-[100px] sm:px-6 sm:pb-[200px] bg-gradient-to-b from-blue-50 to-cyan-50">
         <div class="text-center text-sm sm:text-base font-semibold tracking-wide">
             <p class="mb-1">パスワードをリセットします。下記に新しいパスワードを入力してください。</p>
         </div>

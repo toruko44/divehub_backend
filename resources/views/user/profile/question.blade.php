@@ -2,11 +2,6 @@
     @forelse ($questions as $question)
         <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
             <div class="flex flex-col sm:flex-row gap-4">
-                @if($question->image)
-                    <div class="w-full sm:w-32 flex-shrink-0">
-                        <img src="{{ $question->image->path }}" alt="{{ $question->title }}" class="w-full h-auto rounded-md object-cover">
-                    </div>
-                @endif
                 <div class="flex-grow">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ $question->title }}</h3>
                     <p class="text-gray-600 text-sm mb-3 line-clamp-2">{{ $question->content }}</p>

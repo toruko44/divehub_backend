@@ -25,8 +25,12 @@
     <meta name="twitter:image" content="{{ asset('images/OGP_icon.jpeg') }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@Divehub_web" />
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Google Fonts Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
+
     <script type="application/ld+json">
         {
             "@context": "http://schema.org",
@@ -40,20 +44,35 @@
             }
         }
     </script>
-    <!-- Google analytics (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPKQ5YBD9C"></script>
+    <!-- Google Analytics - 遅延読み込み -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-RPKQ5YBD9C';
+        document.head.appendChild(script);
 
-      gtag('config', 'G-RPKQ5YBD9C');
+        script.onload = function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-RPKQ5YBD9C');
+        };
+      });
     </script>
-    <!-- Google Adsence -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2394713630447930"
-    crossorigin="anonymous"></script>
-    <!-- Styles -->
-    @vite('resources/css/app.css')
+
+    <!-- Google Adsense - 遅延読み込み -->
+    <script>
+      window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2394713630447930';
+        script.crossOrigin = 'anonymous';
+        document.head.appendChild(script);
+      });
+    </script>
+    <!-- Styles & Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @yield('styles')
 </head>
 @yield('body')

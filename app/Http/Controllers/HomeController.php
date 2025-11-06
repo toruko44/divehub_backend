@@ -148,12 +148,15 @@ class HomeController extends Controller
         $user = User::findOrFail($id);
         $tags =Tag::all()->pluck('name', 'id')->toArray();
         $questions = Question::where('user_id', $id)
+            ->orderBy('created_at', 'desc')
             ->paginate(5, ['*'], 'questions_page');
 
         $answers = Answer::where('user_id', $id)
+            ->orderBy('created_at', 'desc')
             ->paginate(5, ['*'], 'answers_page');
 
         $article_reports = Article::where('user_id', $id)
+            ->orderBy('created_at', 'desc')
             ->paginate(5, ['*'], 'articles_page');
         return view('user.profile.profile', compact('user','questions', 'answers', 'article_reports'));
     }

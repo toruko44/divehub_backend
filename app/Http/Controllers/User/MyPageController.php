@@ -16,12 +16,15 @@ class MyPageController extends Controller
     {
         $tags =Tag::all()->pluck('name', 'id')->toArray();
         $questions = Question::where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
             ->paginate(5, ['*'], 'questions_page');
 
         $answers = Answer::where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
             ->paginate(5, ['*'], 'answers_page');
 
         $article_reports = Article::where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
             ->paginate(5, ['*'], 'articles_page');
 
         return view('user.my_page.my_page', compact('questions', 'answers', 'article_reports'));

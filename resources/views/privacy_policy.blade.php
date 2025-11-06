@@ -1,8 +1,9 @@
 @extends('layout.user')
 
 @section('content')
-    <div class="relative bg-white m-4 rounded-md border border-gray-300 p-6">
-        <h1 class="text-2xl font-bold mb-4">プライバシーポリシー</h1>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="relative bg-white rounded-md border border-gray-300 p-6">
+            <h1 class="text-2xl font-bold mb-4">プライバシーポリシー</h1>
         <p class="mb-4">本プライバシーポリシーは、DIVE HUB〜ダイビング情報共有サイト〜（以下、「当サイト」）が収集、使用、および共有する個人情報についての方針を説明するものです。当サイトをご利用いただく際には、本プライバシーポリシーに同意いただいたものとみなします。</p>
 
         <h2 class="text-xl font-semibold mb-2">1. 収集する情報</h2>
@@ -42,5 +43,6 @@
         <h2 class="text-xl font-semibold mb-2">8. お問い合わせ</h2>
         <p class="mb-4">プライバシーポリシーに関するお問い合わせは、以下のリンクでお願いいたします。</p>
         <a href="{{ route('inquiry') }}" class="text-blue-700 hover:text-blue-900 transition duration-300">お問い合わせ</a>
+        </div>
     </div>
 @endsection
