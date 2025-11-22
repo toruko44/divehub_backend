@@ -200,7 +200,7 @@ export function applyTemplate(editor, templateKey) {
 
     // 既存のコンテンツを完全に置き換え
     editor.render(templateData).then(() => {
-        console.log('テンプレートが正常に適用されました');
+        // テンプレート適用完了
     }).catch((error) => {
         console.error('テンプレート適用中にエラーが発生しました:', error);
         // エラーが発生した場合の代替処理

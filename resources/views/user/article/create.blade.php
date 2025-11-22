@@ -8,7 +8,9 @@
         ['記事作成', ''],
     ]" />
 
-    <div class="relative bg-white mx-2 rounded-lg mb-10 p-6">
+    <!-- Content Section -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="relative bg-white rounded-lg shadow mb-10 p-6">
         <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 space-y-4 md:space-y-0">
             <div id="template-selector" class="flex flex-col md:flex-row items-start md:items-center space-y-2 md:space-y-0 md:space-x-4">
                 <select
@@ -67,11 +69,12 @@
             </div>
 
             <div class="flex justify-end space-x-4">
-                <button id="draftButton" type="button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg">下書き保存</button>
-                <button id="sendButton" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">記事を投稿する</button>
+                <button id="draftButton" type="button" class="bg-gray-500 hover:bg-gray-700 text-white font-semibold py-1 px-2 md:py-2 md:px-4 rounded-lg text-sm">下書き保存</button>
+                <button id="sendButton" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-2 md:py-2 md:px-4 rounded-lg text-sm">記事を投稿する</button>
             </div>
         </form>
     </div>
+</div>
 
     @vite('resources/js/editorjs.js')
 
@@ -111,7 +114,7 @@
             const isDraft = this.id === 'draftButton' ? 1 : 0;
             $('#is_draft').val(isDraft);
 
-            editor.save().then((outputData) => {
+            window.editor.save().then((outputData) => {
 
                 if (imageQueue.length > 0) {
                     uploadImages().then((uploadedImages) => {

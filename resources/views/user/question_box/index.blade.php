@@ -33,8 +33,12 @@
             <form action="{{ route('user.question_box.index') }}" method="GET" class="flex flex-col sm:flex-row gap-3">
                 <div class="flex-1">
                     <label for="tag" class="block text-sm font-medium text-gray-700 mb-1">カテゴリで絞り込み</label>
-                    <x-user-field-input type="select" name="tag" :options="\App\Enums\TagType::toSelectArray()" 
-                                        placeholder="すべてのカテゴリ" value="{{ $tag }}" class="w-full" />
+                    <select name="tag" id="tag" class="w-full border border-gray-300 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="">すべてのカテゴリ</option>
+                        @foreach(\App\Enums\TagType::toSelectArray() as $option_value => $option_label)
+                            <option value="{{ $option_value }}" {{ $tag == $option_value ? 'selected' : '' }}>{{ $option_label }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="flex items-end">
                     <button type="submit" 
@@ -55,24 +59,24 @@
                         <div class="border-b border-gray-200 last:border-b-0 pb-4 last:pb-0">
                             <div class="flex flex-col sm:flex-row sm:items-start gap-4">
                                 <div class="flex-1 min-w-0">
-                                    <div class="flex flex-wrap items-center gap-2 mb-2">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                    <div class="flex flex-wrap items-center gap-1.5 mb-2">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 flex-shrink-0">
                                             {{ \App\Enums\TagType::from($question->tag->name)->label() ?? '一般' }}
                                         </span>
-                                        <span class="text-xs text-gray-500">
-                                            {{ $question->created_at->format('Y年m月d日 H:i') }}
-                                        </span>
                                         @if($question->answers_count > 0)
-                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
-                                                回答 {{ $question->answers_count }}件
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 flex-shrink-0">
+                                                回答{{ $question->answers_count }}件
                                             </span>
                                         @else
-                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 flex-shrink-0">
                                                 未回答
                                             </span>
                                         @endif
+                                        <span class="text-xs text-gray-500">
+                                            {{ $question->created_at->format('Y年m月d日 H:i') }}
+                                        </span>
                                     </div>
-                                    <h3 class="text-base sm:text-lg font-medium text-gray-900 mb-2">
+                                    <h3 class="text-base sm:text-lg font-medium text-gray-900 mb-2 line-clamp-2">
                                         <a href="{{ route('user.question_box.show', ['question_id' => $question->id]) }}" 
                                            class="hover:text-blue-600 transition-colors">
                                             {{ $question->title }}

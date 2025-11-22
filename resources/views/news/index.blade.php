@@ -34,7 +34,7 @@
                                         {{ $item->created_at->format('Y年m月d日') }}
                                     </span>
                                 </div>
-                                <h3 class="text-base sm:text-lg font-medium text-gray-900">
+                                <h3 class="text-base sm:text-lg font-medium text-gray-900 line-clamp-2">
                                     <a href="{{ route('news.show', ['news_id' => $item->id]) }}"
                                        class="hover:text-blue-600 transition-colors">
                                         {{ $item->title }}

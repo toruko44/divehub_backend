@@ -198,7 +198,9 @@ const editor = new EditorJS({
     data: initialEditorData ? JSON.parse(initialEditorData) : undefined,
 }, )
 
-document.getElementById("applyTemplateButton").addEventListener("click", () => {
+const applyTemplateButton = document.getElementById("applyTemplateButton");
+if (applyTemplateButton) {
+    applyTemplateButton.addEventListener("click", () => {
     const selectedTemplate = document.getElementById("templateDropdown").value;
 
     if (!selectedTemplate) {
@@ -228,6 +230,7 @@ document.getElementById("applyTemplateButton").addEventListener("click", () => {
         console.error('エディターの保存中にエラーが発生しました:', error);
         applyTemplate(editor, selectedTemplate);
     });
-});
+    });
+}
 
 window.editor = editor;

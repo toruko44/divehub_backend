@@ -5,15 +5,12 @@
     <div class="bg-white border-b border-gray-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
             <div class="text-center">
-                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                    ダイビングコミュニティ
-                </h1>
                 <p class="text-base sm:text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
-                    ダイビングに関する疑問を解決し、経験を共有する場所。初心者から上級者まで、みんなでダイビングの知識を深めましょう。
+                    ダイビングに関する疑問を解決し、経験を共有する。初心者から上級者まで、みんなでダイビングの知識を深めましょう。
                 </p>
                 
                 <!-- Feature highlights -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 max-w-4xl mx-auto">
+                <div class="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 max-w-4xl mx-auto">
                     <div class="text-center">
                         <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
                             <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -21,7 +18,7 @@
                             </svg>
                         </div>
                         <h3 class="font-semibold text-gray-900 mb-1">質問・回答</h3>
-                        <p class="text-sm text-gray-600">ダイビングの疑問をみんなで解決</p>
+                        <p class="text-sm text-gray-600 hidden md:block">ダイビングの疑問をみんなで解決</p>
                         <div class="mt-4">
                             <button type="button" id="openModalButtonQuestion"
                                 class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors">
@@ -36,23 +33,14 @@
                             </svg>
                         </div>
                         <h3 class="font-semibold text-gray-900 mb-1">記事投稿</h3>
-                        <p class="text-sm text-gray-600">ダイビング体験や知識を共有</p>
+                        <p class="text-sm text-gray-600 hidden md:block">ダイビング体験や知識を共有</p>
                         <div class="mt-4">
                             <a href="{{ route('user.article.create') }}" 
-                               class="inline-flex items-center justify-center px-4 py-2 border-2 border-green-600 text-sm font-medium rounded-md text-green-600 bg-white hover:bg-green-50 transition-colors">
+                               class="inline-flex items-center justify-center px-4 py-2 border-2 border-green-600 text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-50 transition-colors">
                                 記事を作る
                             </a>
                         </div>
                     </div>
-                    <!-- <div class="text-center">
-                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-3">
-                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="font-semibold text-gray-900 mb-1">コミュニティ</h3>
-                        <p class="text-sm text-gray-600">ダイバー同士の交流と情報交換</p>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -92,7 +80,7 @@
                                         {{ $question->created_at->format('Y/m/d') }}
                                     </span>
                                 </div>
-                                <h3 class="text-base sm:text-lg font-medium text-gray-900 mb-2 hover:text-blue-600">
+                                <h3 class="text-base sm:text-lg font-medium text-gray-900 mb-2 hover:text-blue-600 line-clamp-2">
                                     <a href="{{ route('user.question_box.show', ['question_id' => $question->id]) }}">
                                         {{ $question->title }}
                                     </a>
@@ -116,7 +104,7 @@
                 </a>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                 @foreach ($article_reports as $article_report)
                     <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
                         <a href="{{ route('user.article.show', ['article_id' => $article_report->id]) }}" class="block">
@@ -138,12 +126,12 @@
                                          class="w-full h-full object-cover">
                                 @endif
                             </div>
-                            <div class="p-4">
-                                <h3 class="font-medium text-gray-900 mb-2 line-clamp-2 hover:text-blue-600">
+                            <div class="p-2 sm:p-4">
+                                <h3 class="font-medium text-gray-900 mb-1 sm:mb-2 line-clamp-2 hover:text-blue-600 text-sm sm:text-base">
                                     {{ $article_report->title }}
                                 </h3>
-                                <div class="text-sm text-gray-500">
-                                    {{ $article_report->created_at->format('Y年m月d日') }}
+                                <div class="text-xs sm:text-sm text-gray-500">
+                                    {{ $article_report->created_at->format('m/d') }}
                                 </div>
                             </div>
                         </a>

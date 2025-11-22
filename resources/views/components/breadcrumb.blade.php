@@ -6,7 +6,7 @@
 // ];
 ?>
 
-<section class="flex text-general-black mt-2 mb-8 md:mb-12">
+<section class="flex text-general-black mt-2 mb-8 md:mb-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <ol class="inline-flex items-center flex-wrap space-x-1 md:space-x-1">
         <li>
             <a href="{{ route('top') }}" class="hover:text-cyan-500 text-xs sm:text-sm md:text-base tracking-wide">

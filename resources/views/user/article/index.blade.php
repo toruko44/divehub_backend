@@ -51,7 +51,7 @@
 
     <!-- Articles Grid -->
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
             @foreach ($article_reports as $article_report)
                 <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-200">
                     <a href="{{ route('user.article.show', ['article_id' => $article_report->id]) }}" class="block">
@@ -74,21 +74,21 @@
                                      class="w-full h-full object-cover">
                             @endif
                             <!-- Article Type Badge -->
-                            <div class="absolute top-2 left-2">
-                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-white bg-opacity-90 text-gray-700">
+                            <div class="absolute top-1 left-1 sm:top-2 sm:left-2">
+                                <span class="inline-flex items-center px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-medium bg-white bg-opacity-90 text-gray-700">
                                     記事
                                 </span>
                             </div>
                         </div>
                         
                         <!-- Content -->
-                        <div class="p-4">
-                            <h3 class="font-medium text-gray-900 mb-2 line-clamp-2 hover:text-blue-600 transition-colors">
+                        <div class="p-2 sm:p-4">
+                            <h3 class="font-medium text-gray-900 mb-1 sm:mb-2 hover:text-blue-600 transition-colors text-sm sm:text-base line-clamp-2">
                                 {{ $article_report->title }}
                             </h3>
                             <div class="flex items-center justify-between text-xs text-gray-500">
-                                <span>{{ $article_report->created_at->format('Y/m/d') }}</span>
-                                <span>{{ $article_report->user->name ?? '匿名' }}</span>
+                                <span>{{ $article_report->created_at->format('m/d') }}</span>
+                                <span class="hidden sm:inline">{{ $article_report->user->name ?? '匿名' }}</span>
                             </div>
                         </div>
                     </a>

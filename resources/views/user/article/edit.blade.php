@@ -42,8 +42,8 @@
             </div>
 
             <div class="flex justify-end space-x-4">
-                <button id="draftButton" type="button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg">下書き保存</button>
-                <button id="sendButton" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">記事を投稿する</button>
+                <button id="draftButton" type="button" class="bg-gray-500 hover:bg-gray-700 text-white font-semibold py-1 px-2 md:py-2 md:px-4 rounded-lg text-sm">下書き保存</button>
+                <button id="sendButton" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-2 md:py-2 md:px-4 rounded-lg text-sm">記事を投稿する</button>
             </div>
         </form>
     </div>
@@ -82,13 +82,28 @@
         $(document).ready(function() {
             const imageQueue = [];
 
+            // EditorJSの初期化を待つ
+            function waitForEditor() {
+                return new Promise((resolve) => {
+                    const checkEditor = () => {
+                        if (window.editor) {
+                            resolve();
+                        } else {
+                            setTimeout(checkEditor, 100);
+                        }
+                    };
+                    checkEditor();
+                });
+            }
+
             // 保存ボタンのクリック処理
             $('#sendButton, #draftButton').click(function(e) {
                 e.preventDefault();
                 const isDraft = this.id === 'draftButton' ? 1 : 0;
                 $('#is_draft').val(isDraft);
 
-                editor.save().then((outputData) => {
+                waitForEditor().then(() => {
+                    window.editor.save().then((outputData) => {
                     if (imageQueue.length > 0) {
                         uploadImages().then((uploadedImages) => {
                             uploadedImages.forEach((imageData, index) => {
@@ -106,8 +121,9 @@
                         $('#content').val(JSON.stringify(outputData));
                         $('#myForm').off('submit').submit();
                     }
-                }).catch((error) => {
-                    console.error('エディタ保存中にエラーが発生しました:', error);
+                    }).catch((error) => {
+                        console.error('エディタ保存中にエラーが発生しました:', error);
+                    });
                 });
             });
 
